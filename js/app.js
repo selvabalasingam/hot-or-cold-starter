@@ -11,46 +11,47 @@ $(document).ready(function(){
   		$(".overlay").fadeOut(1000);
   	});
 
-  	/*--- Start a new game when the user clicks the “New Game” button ---*/
-  	var guess;
-  	var number;
-  	var newGame = function () {
-  		$("#guessButton").on("click", function() {
-		event.preventDefault();
-  	}
+    var luckynumber = Math.ceil(Math.random()*100); /*--- for random number ---*/
 
-  	/*--- make sure it's a whole number and not a decimal ---*/
-  	if(isNaN(number)){
-  		alert("Please enter numbers only")
-  	} 
-  	else if (number % 1 > 0) {
-  		alert("Sorry no decimals! Please enter whole numbers only!")
-  	}
-  	/*--- A secret number between 1 and 100 should be generated for the user to guess ---*/
-   	else if (number > 100) {
-  		alert("Please enter numbers from 1 to 100")
-  	}
+    $("form").submit(function(e){
+      e.preventDefault();
+      var number = $("#userGuess").val();
+      var distance = Math.abs(luckynumber - number);
+      /*--- make sure it's a whole number and not a decimal ---*/
+      if(isNaN(number)){
+        alert("Please enter numbers only")
+      } 
+      else if (number % 1 > 0) {
+        alert("Sorry no decimals! Please enter whole numbers only!")
+      }
+      /*--- A secret number between 1 and 100 should be generated for the user to guess ---*/
+      else if (number > 100) {
+        alert("Please enter numbers from 1 to 100")
+      }
+      else{
+        if (distance >= 50){
+          alert("Freezing cold! Guess again");
+        }
+        else if (distance >= 30){
+          alert("Cold, almost there though!");
+        }
+        else if (distance >= 20){
+          alert("Warm! keep trying!");
+        }
+        else if (distance >= 10){
+          alert("Hot... Very, very close!");
+        }
+        else if (distance > 0){
+          alert("super hot!");
+        }
+        else {
+          alert("Good job!!")
+        }
+        /*--- Track how many guesses the user has made & supply users with a list of the numbers they have guessed so far ---*/
+        $("#guessList").prepend("<li>" + guess + "</li>");
+      }
 
-  	/*--- Feedback about each guess – if it was too low, too high, or just right. ---*/
-  	if (number >= 50){
-  		feedback("Freezing cold! Guess again");
-  	}
-  	else if (number >= 30){
-  		feedback("Cold, almost there though!");
-  	}
-  	else if (number >= 20){
-  		feedback("Warm! keep trying!");
-  	}
-  	else if (number >= 10){
-  		feedback("Hot... Very, very close!");
-  	}
-  	else {
-  		feedback("Super hot! Please guess again!")
-  	}
-
-  	/*--- Track how many guesses the user has made & supply users with a list of the numbers they have guessed so far ---*/
-  	$("#guessList").prepend("<li>" + guess + "</li>");
-
+    });
 });
 
 
