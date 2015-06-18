@@ -13,10 +13,20 @@ $(document).ready(function(){
 
     var luckynumber = Math.ceil(Math.random()*100); /*--- for random number ---*/
 
+    var changeHeader = function(text, color){ /*--- to change the feedback everytime user enters number ---*/
+      $("#feedback").text(text);
+    }
+
+    var guessCount = 0;
+    var guessCountDisplay = function() {
+      $("#count").text(guessCount);
+    };
+
     $("form").submit(function(e){
       e.preventDefault();
       var number = $("#userGuess").val();
       var distance = Math.abs(luckynumber - number);
+
       /*--- make sure it's a whole number and not a decimal ---*/
       if(isNaN(number)){
         alert("Please enter numbers only")
@@ -30,22 +40,22 @@ $(document).ready(function(){
       }
       else{
         if (distance >= 50){
-          alert("Freezing cold! Guess again");
+          changeHeader("Freezing cold! Guess again");
         }
         else if (distance >= 30){
-          alert("Cold, almost there though!");
+          changeHeader("Cold, almost there though!");
         }
         else if (distance >= 20){
-          alert("Warm! keep trying!");
+          changeHeader("Warm! keep trying!");
         }
         else if (distance >= 10){
-          alert("Hot... Very, very close!");
+          changeHeader("Hot... Very, very close!");
         }
         else if (distance > 0){
-          alert("super hot!");
+          changeHeader("super hot!");
         }
         else {
-          alert("Good job!!")
+          changeHeader("Good job!!")
         }
         /*--- Track how many guesses the user has made & supply users with a list of the numbers they have guessed so far ---*/
         $("#guessList").prepend("<li>" + guess + "</li>");
