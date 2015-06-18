@@ -19,7 +19,7 @@ $(document).ready(function(){
 
     var guessCount = 0;
     var guessCountDisplay = function() {
-      $("#count").text(guessCount);
+      $("#count").text(guessCount++);
     };
 
     $("form").submit(function(e){
@@ -59,6 +59,7 @@ $(document).ready(function(){
         }
         /*--- Track how many guesses the user has made & supply users with a list of the numbers they have guessed so far ---*/
         $("#guessList").prepend("<li>" + guess + "</li>");
+        guessCountDisplay();
       }
 
     });
