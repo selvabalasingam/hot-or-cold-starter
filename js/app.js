@@ -62,7 +62,16 @@ $(document).ready(function(){
         $("#guessList").prepend("<li>" + number + "</li>"); /* use number to define user guess */
         guessCountDisplay(1); /* you need to call the function inorder for it to work! And the count will begin from 0!*/
       }
-
+    });
+    $(".new").click(function(){
+        luckynumber = Math.ceil(Math.random()*100);  //Generates a new random number
+        guessCount = 0; //Sets guess to 0
+        changeHeader("Make a guess!"); //Replaces current header
+        $('#userGuess').val(''); //Clears user input, 
+        //the .val method lets you set or get the value of the input and the empty quotes leave the input empty 
+        //if you typed something inside the quotes then you would see it in the input bar
+        $("ul #guessList li").remove(); //Clear guess area
+        guessCountDisplay(0); //Set number of guesses on screen to guessCount (aka 0)
     });
 });
 
