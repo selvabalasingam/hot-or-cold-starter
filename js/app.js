@@ -17,7 +17,7 @@ $(document).ready(function(){
       $("#feedback").text(text);
     }
 
-    var guessCount = 0;
+    var guessCount = 0; /*--- this counts the guesses from 0 ---*/
     var guessCountDisplay = function() {
       $("#count").text(guessCount++);
     };
@@ -58,8 +58,8 @@ $(document).ready(function(){
           changeHeader("Good job!!")
         }
         /*--- Track how many guesses the user has made & supply users with a list of the numbers they have guessed so far ---*/
-        $("#guessList").prepend("<li>" + guess + "</li>");
-        guessCountDisplay();
+        $("#guessList").prepend("<li>" + number + "</li>"); /* use number to define user guess */
+        guessCountDisplay(); /* you need to call the function inorder for it to work! */
       }
 
     });
