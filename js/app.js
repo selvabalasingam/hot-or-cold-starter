@@ -17,9 +17,10 @@ $(document).ready(function(){
       $("#feedback").text(text);
     }
 
-    var guessCount = 0; /*--- this counts the guesses from 0 ---*/
-    var guessCountDisplay = function() {
-      $("#count").text(guessCount++);
+    guessCount = 0; /*--- this counts the guesses from 0 ---*/
+    var guessCountDisplay = function(amount) {
+      guessCount += amount; /* means guessCount = guessCount + amount; because you either want to leave guessCount at 0 or increment it */
+      $("#count").text(guessCount);
     };
 
     $("form").submit(function(e){
