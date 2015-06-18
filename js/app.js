@@ -60,7 +60,7 @@ $(document).ready(function(){
         }
         /*--- Track how many guesses the user has made & supply users with a list of the numbers they have guessed so far ---*/
         $("#guessList").prepend("<li>" + number + "</li>"); /* use number to define user guess */
-        guessCountDisplay(0); /* you need to call the function inorder for it to work! And the count will begin from 0!*/
+        guessCountDisplay(1); /* you need to call the function inorder for it to work! And the count will begin from 0!*/
       }
 
     });
