@@ -26,6 +26,7 @@ $(document).ready(function(){
     $("form").submit(function(e){
       e.preventDefault();
       var number = $("#userGuess").val();
+      $('#userGuess').val(''); /*--- this will clear the user input everytime you click enter/guess button ---*/
       var distance = Math.abs(luckynumber - number);
 
       /*--- make sure it's a whole number and not a decimal ---*/
@@ -70,7 +71,7 @@ $(document).ready(function(){
         $('#userGuess').val(''); //Clears user input, 
         //the .val method lets you set or get the value of the input and the empty quotes leave the input empty 
         //if you typed something inside the quotes then you would see it in the input bar
-        $("ul #guessList li").remove(); //Clear guess area
+        $("#guessList").html(''); //Clears the guess area ----[you could also do $("#guessList li").remove();]
         guessCountDisplay(0); //Set number of guesses on screen to guessCount (aka 0)
     });
 });
